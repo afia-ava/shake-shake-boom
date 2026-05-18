@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "author": "Anderson Costa",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb2", "top": 275.4, "left": 329.2, "attrs": {} },
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 279.1,
+      "left": 468.45,
+      "rotate": 90,
+      "attrs": { "env": "micropython-20220618-v1.19.1" }
+    },
+    { "type": "board-ssd1306", "id": "oled1", "top": 51.14, "left": 182.63, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 38.3,
+      "left": 397.1,
+      "rotate": 90,
+      "attrs": { "color": "yellow", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 518.3,
+      "left": 397.1,
+      "rotate": 90,
+      "attrs": { "color": "blue", "xray": "1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 518.6, "left": 528, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -57.6,
+      "left": 499.2,
+      "attrs": { "text": "side of can\n" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": 201.6,
+      "left": 288,
+      "attrs": {
+        "text": "----------------------------------------------------------------------------------\ninside can \n"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text3",
+      "top": 518.4,
+      "left": 124.8,
+      "attrs": {
+        "text": "this is the pedometer -->\n(click = shake; \npedometer is also pull-up so it works)"
+      }
+    },
+    {
+      "type": "chip-buck-converter",
+      "id": "chip1",
+      "top": 384.78,
+      "left": 669.4,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "chip-9v-battery", "id": "chip2", "top": 385.02, "left": 801.6, "attrs": {} },
+    {
+      "type": "chip-9v-battery",
+      "id": "chip3",
+      "top": 652.6,
+      "left": 668.18,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "chip-capacitor",
+      "id": "chip4",
+      "top": 998.2,
+      "left": 610.58,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "chip-9v-battery",
+      "id": "chip5",
+      "top": 652.6,
+      "left": 696.98,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "chip-9v-battery",
+      "id": "chip6",
+      "top": 652.6,
+      "left": 725.78,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "chip-9v-battery",
+      "id": "chip7",
+      "top": 652.6,
+      "left": 754.58,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text4",
+      "top": 960,
+      "left": 528,
+      "attrs": { "text": "on top of can" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text5",
+      "top": 720,
+      "left": 316.8,
+      "attrs": {
+        "text": "----------------------------------------------------------------------------------"
+      }
+    }
+  ],
+  "connections": [
+    [ "pico:GND.1", "bb2:tn.20", "black", [ "v0" ] ],
+    [ "pico:3V3", "bb2:bp.18", "red", [ "v0" ] ],
+    [ "bb2:bp.25", "bb2:tp.25", "red", [ "v-0.9", "h20.8", "v-172.8" ] ],
+    [ "btn1:2.r", "bb2:7t.a", "yellow", [ "v118.7", "h-6.3" ] ],
+    [ "btn1:1.r", "bb2:tn.8", "black", [ "v0" ] ],
+    [ "relay1:GND", "bb2:bn.14", "black", [ "h0" ] ],
+    [ "bb2:bn.25", "bb2:tn.25", "black", [ "v-1.3", "h30.4", "v-172.8" ] ],
+    [ "relay1:IN", "bb2:14b.j", "cyan", [ "h0" ] ],
+    [ "btn2:2.l", "bb2:8b.j", "blue", [ "v0" ] ],
+    [ "btn2:1.l", "bb2:bn.8", "black", [ "v0" ] ],
+    [ "chip2:+", "chip1:IN+", "red", [ "h0" ] ],
+    [ "chip2:-", "chip1:IN-", "black", [ "h0" ] ],
+    [ "chip1:OUT-", "bb2:bn.24", "black", [ "v88.21", "h-96" ] ],
+    [ "chip1:OUT+", "bb2:30b.f", "violet", [ "h0" ] ],
+    [ "bb2:30b.j", "relay1:VCC", "violet", [ "v9.6", "h-48", "v67.2", "h-57.6" ] ],
+    [ "chip3:-", "chip5:+", "green", [ "v-9.6", "h9.6" ] ],
+    [ "chip5:-", "chip6:+", "green", [ "v-9.6", "h19.2" ] ],
+    [ "chip6:-", "chip7:+", "green", [ "v-9.6", "h19.2" ] ],
+    [ "chip7:-", "bb2:bn.23", "black", [ "v-115.2", "h-201.6" ] ],
+    [ "chip3:+", "relay1:COM", "orange", [ "v0" ] ],
+    [ "relay1:NO", "chip4:cathode", "orange", [ "h0" ] ],
+    [ "chip4:anode", "bb2:bn.10", "black", [ "v-374.4", "h-38.4" ] ],
+    [ "bb2:30b.i", "bb2:25b.i", "magenta", [ "v0" ] ],
+    [ "pico:GP0", "bb2:26t.c", "", [ "$bb" ] ],
+    [ "pico:GP1", "bb2:25t.c", "", [ "$bb" ] ],
+    [ "pico:GND.1", "bb2:24t.c", "", [ "$bb" ] ],
+    [ "pico:GP2", "bb2:23t.c", "", [ "$bb" ] ],
+    [ "pico:GP3", "bb2:22t.c", "", [ "$bb" ] ],
+    [ "pico:GP4", "bb2:21t.c", "", [ "$bb" ] ],
+    [ "pico:GP5", "bb2:20t.c", "", [ "$bb" ] ],
+    [ "pico:GND.2", "bb2:19t.c", "", [ "$bb" ] ],
+    [ "pico:GP6", "bb2:18t.c", "", [ "$bb" ] ],
+    [ "pico:GP7", "bb2:17t.c", "", [ "$bb" ] ],
+    [ "pico:GP8", "bb2:16t.c", "", [ "$bb" ] ],
+    [ "pico:GP9", "bb2:15t.c", "", [ "$bb" ] ],
+    [ "pico:GND.3", "bb2:14t.c", "", [ "$bb" ] ],
+    [ "pico:GP10", "bb2:13t.c", "", [ "$bb" ] ],
+    [ "pico:GP11", "bb2:12t.c", "", [ "$bb" ] ],
+    [ "pico:GP12", "bb2:11t.c", "", [ "$bb" ] ],
+    [ "pico:GP13", "bb2:10t.c", "", [ "$bb" ] ],
+    [ "pico:GND.4", "bb2:9t.c", "", [ "$bb" ] ],
+    [ "pico:GP14", "bb2:8t.c", "", [ "$bb" ] ],
+    [ "pico:GP15", "bb2:7t.c", "", [ "$bb" ] ],
+    [ "pico:GP16", "bb2:7b.h", "", [ "$bb" ] ],
+    [ "pico:GP17", "bb2:8b.h", "", [ "$bb" ] ],
+    [ "pico:GND.5", "bb2:9b.h", "", [ "$bb" ] ],
+    [ "pico:GP18", "bb2:10b.h", "", [ "$bb" ] ],
+    [ "pico:GP19", "bb2:11b.h", "", [ "$bb" ] ],
+    [ "pico:GP20", "bb2:12b.h", "", [ "$bb" ] ],
+    [ "pico:GP21", "bb2:13b.h", "", [ "$bb" ] ],
+    [ "pico:GND.6", "bb2:14b.h", "", [ "$bb" ] ],
+    [ "pico:GP22", "bb2:15b.h", "", [ "$bb" ] ],
+    [ "pico:RUN", "bb2:16b.h", "", [ "$bb" ] ],
+    [ "pico:GP26", "bb2:17b.h", "", [ "$bb" ] ],
+    [ "pico:GP27", "bb2:18b.h", "", [ "$bb" ] ],
+    [ "pico:GND.7", "bb2:19b.h", "", [ "$bb" ] ],
+    [ "pico:GP28", "bb2:20b.h", "", [ "$bb" ] ],
+    [ "pico:ADC_VREF", "bb2:21b.h", "", [ "$bb" ] ],
+    [ "pico:3V3", "bb2:22b.h", "", [ "$bb" ] ],
+    [ "pico:3V3_EN", "bb2:23b.h", "", [ "$bb" ] ],
+    [ "pico:GND.8", "bb2:24b.h", "", [ "$bb" ] ],
+    [ "pico:VSYS", "bb2:25b.h", "", [ "$bb" ] ],
+    [ "pico:VBUS", "bb2:26b.h", "", [ "$bb" ] ],
+    [ "oled1:SCL", "bb2:18b.i", "orange", [ "v-19.2", "h67.5", "v393.6" ] ],
+    [ "bb2:17b.j", "oled1:SDA", "purple", [ "v0", "h-211.2", "v-384", "h-48" ] ],
+    [ "oled1:VCC", "bb2:tp.1", "red", [ "v-28.8", "h86.55" ] ],
+    [ "oled1:GND", "bb2:tn.2", "black", [ "v-38.4", "h153.6" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,11 @@
+{
+  "name": "buck-converter",
+  "author": "Emme McDonald",
+  "pins": [
+    "IN+",
+    "IN-",
+    "OUT+",
+    "OUT-"
+  ],
+  "controls": []
+}

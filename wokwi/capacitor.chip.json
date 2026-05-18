@@ -1,0 +1,9 @@
+{
+  "name": "capacitor",
+  "author": "Emme McDonald",
+  "pins": [
+    "cathode",
+    "anode"
+  ],
+  "controls": []
+}

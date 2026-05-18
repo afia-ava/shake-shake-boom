@@ -1,0 +1,9 @@
+{
+  "name": "9v-battery",
+  "author": "Emme McDonald",
+  "pins": [
+    "-",
+    "+"
+  ],
+  "controls": []
+}
